@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Portfolio Gallery</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="portfolio.css">
+</head>
+
+<body>
+
+    <h1>Portfolio Gallery</h1>
+
+    <section class="gallery">
+        <div class="container">
+            <div class="row">
+                <div class="gallery-filter">
+                    <span class="filter-item active" data-filter="all">all</span>
+                    <span class="filter-item" data-filter="myself">My Self</span>
+                    <span class="filter-item" data-filter="friends">Friends</span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="gallery-item myself">
+                    <div class="gallery-item-inner">
+                        <img src="img/rere1.jpg" alt="myself">
+                    </div>
+                </div>
+                <div class="gallery-item friends">
+                    <div class="gallery-item-inner">
+                        <img src="img/rere2.jpg" alt="friends">
+                    </div>
+                </div>
+                <div class="gallery-item myself">
+                    <div class="gallery-item-inner">
+                        <img src="img/rere4.jpg" alt="myself">
+                    </div>
+                </div>
+                <div class="gallery-item friends">
+                    <div class="gallery-item-inner">
+                        <img src="img/rere3.jpg" alt="friends">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        const filterContainer = document.querySelector(".gallery-filter"),
+            galleryItems = document.querySelectorAll(".gallery-item");
+
+        filterContainer.addEventListener("click", (event) => {
+            if (event.target.classList.contains("filter-item")) {
+                filterContainer.querySelector(".active").classList.remove("active");
+                event.target.classList.add("active");
+                const filterValue = event.target.getAttribute("data-filter");
+                galleryItems.forEach((item) => {
+                    if (item.classList.contains(filterValue) || filterValue === 'all') {
+                        item.classList.remove("hide");
+                        item.classList.add("show");
+                    } else {
+                        item.classList.remove("show");
+                        item.classList.add("hide");
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>
